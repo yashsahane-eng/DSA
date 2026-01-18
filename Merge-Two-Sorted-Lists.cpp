@@ -8,32 +8,30 @@
 8 *     ListNode(int x, ListNode *next) : val(x), next(next) {}
 9 * };
 10 */
-11class Solution {
-12public:
-13    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-14        vector<int>arr;
-15        ListNode* temp1=list1;
-16        ListNode* temp2=list2;
-17
-18        while(temp1 !=NULL){
-19            arr.push_back(temp1->val);
-20            temp1=temp1->next;
-21        }
-22        while(temp2 !=NULL){
-23            arr.push_back(temp2->val);
-24            temp2=temp2->next;
-25        }
-26
-27        sort(arr.begin(),arr.end());
-28
-29        ListNode*dummyNode=new ListNode(-1);
-30        ListNode*temp=dummyNode;
-31        for(int i=0;i<arr.size();i++){
-32            temp->next=new ListNode(arr[i]);
-33            temp=temp->next;
-34        }
-35        return dummyNode->next;
-36
-37        
-38    }
-39};
+11
+12 // OPTIMAL SOLUTION
+13class Solution {
+14public:
+15    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+16        ListNode*dummyNode=new ListNode(-1);
+17        ListNode* temp=dummyNode;
+18
+19        while(list1 !=nullptr && list2 !=nullptr){
+20            if(list1->val <= list2->val){
+21                temp->next=list1;
+22                list1=list1->next;
+23            }else{
+24                temp->next=list2;
+25                list2=list2->next;
+26            }
+27            temp=temp->next;
+28        }
+29        if(list1 !=nullptr){
+30            temp->next=list1;
+31        }else{
+32            temp->next=list2;
+33        }
+34        return dummyNode->next;
+35        
+36    }
+37};
