@@ -8,20 +8,18 @@
 8 *     ListNode(int x, ListNode *next) : val(x), next(next) {}
 9 * };
 10 */
-11 // ITERATIVE SOLUTION 
+11 // RECURSIVE SOLUTION
 12class Solution {
 13public:
 14    ListNode* reverseList(ListNode* head) {
-15        ListNode*temp=head;
-16        ListNode*prev=NULL;
-17
-18        while(temp !=NULL){
-19            ListNode*front=temp->next;
-20            temp->next=prev;
-21            prev=temp;
-22            temp=front;
-23        }
-24        return prev;
-25        
-26    }
-27};
+15        if(head==NULL || head->next==NULL){
+16            return head;
+17        }
+18        ListNode*newHead=reverseList(head->next);
+19        ListNode*front=head->next;
+20        front->next=head;
+21        head->next=NULL;
+22        return newHead;
+23        
+24    }
+25};
