@@ -7,41 +7,29 @@
 7 *     ListNode(int x) : val(x), next(nullptr) {}
 8 *     ListNode(int x, ListNode *next) : val(x), next(next) {}
 9 * };
-10 */
+10 */ //OPTIMAL SOLUTION
 11class Solution {
 12public:
 13    ListNode* removeNthFromEnd(ListNode* head, int n) {
-14        if(head==NULL){
-15            return NULL;
-16        }
-17        int cnt=0;
-18        ListNode*temp=head;
-19
-20        while(temp !=NULL){
-21            cnt++;
-22            temp=temp->next;
-23
-24        }
-25        if(cnt==n){
-26            ListNode*newHead=head->next;
-27            delete(head);
-28            return newHead;
-29        }
-30        int res=cnt-n;
-31        temp=head;
+14        ListNode*fast=head;
+15        ListNode*slow=head;
+16
+17        for(int i=0 ;i<n;i++){
+18            fast=fast->next;
+19        }
+20        if(fast ==NULL){
+21            return head->next;
+22        }
+23        while(fast->next != NULL){
+24            slow=slow->next;
+25            fast=fast->next;
+26        }
+27        ListNode*delNode=slow->next;
+28        slow->next=slow->next->next;
+29        delete(delNode);
+30        return head;
+31
 32
-33        while(temp !=NULL){
-34            res--;
-35            if(res==0){
-36                break;
-37            }
-38            temp=temp->next;
-39        }
-40        ListNode*delNode=temp->next;
-41        temp->next=temp->next->next;
-42        delete(delNode);
-43        return head;
-44
-45
-46    }
-47};
+33        
+34    }
+35};
