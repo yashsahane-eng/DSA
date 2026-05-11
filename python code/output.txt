@@ -1,9 +1,1 @@
-deque([1, 2, 3, 4, 5])
-deque([7, 1, 2, 3, 4, 5])
-5
-deque([7, 1, 2, 3, 4])
-7
-deque([1, 2, 3, 4])
-deque([1, 2, 3, 4, 8, 9, 10])
-deque([8, 'Yash', 1, 2, 3, 4, 8, 9, 10])
-3
+Enter the marks of the student: Grade C

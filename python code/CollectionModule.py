@@ -28,7 +28,4 @@ print(dq)# It will add 'Yash' and 8 at the beginning of the deque. Note that the
 
 
 
-from collections import Counter
-arr=[1,2,3,4,5,1,2,3,4,5,1,2,3,4,5]
-print(arr[2])
-print(list(arr.elements())) # It will return a list of all the elements in the counter
+
