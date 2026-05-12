@@ -18,7 +18,7 @@ class Solution:
 
       return count 
     
-n=5585
+n=int(input())
 
 sol=Solution()
 
