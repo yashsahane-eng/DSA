@@ -4,25 +4,28 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+
         n=len(s)
 
-        maxLen=0 
+        hash= [-1] * 256
 
-        for i in range (n):
+        l=0
+        r=0
+        maxLen=0
 
-            hash_set = [0] * 256
+        while r < n :
+
+            if hash[ord(s[r])] !=-1:
+                l=max(hash[ord(s[r])]+1 ,l)
 
 
-            for j in range(i,n):
+            current_Len=r-l+1
 
-                if hash_set[ord(s[j])]==1:
-                    break
+            maxLen=max(maxLen , current_Len)
 
-                hash_set[ord(s[j])]=1
+            hash[ord(s[r])]=r
 
-                curr_Len=j-i+1
-
-                maxLen=max(maxLen , curr_Len)
+            r+=1
 
         return maxLen
         
