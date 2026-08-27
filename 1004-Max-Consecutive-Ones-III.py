@@ -5,30 +5,28 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        
-        maxLen=0
-        r=0
-        l=0
-        zeros=0
-
         n=len(nums)
 
-        while r<n:
+        l,r=0,0
+        zeros , maxLen=0,0
+
+        while r<n :
 
             if nums[r]==0:
                 zeros+=1
 
-            while zeros >k:
-
+            if zeros > k:
                 if nums[l]==0:
-                    zeros+=1
+                    zeros-=1
 
                 l+=1
+
+            if zeros <=k:
 
                 Len=r-l+1
 
                 maxLen=max(Len , maxLen)
 
-                r+=1
+            r+=1
 
         return maxLen
