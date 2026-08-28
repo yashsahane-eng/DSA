@@ -4,22 +4,27 @@ class Solution(object):
         :type fruits: List[int]
         :rtype: int
         """
-        maxLen=0
-
         n=len(fruits)
 
-        for i in range (n):
-            s=set()
+        maxLen=0
 
-            for j in range(i,n):
-                s.add(fruits[j])
+        mpp={}
 
-                if len(s)<=2:
-                    Len=j-i+1
+        l,r=0,0
 
-                    maxLen=max(maxLen , Len)
+        while r<n:
+            mpp[fruits[r]]=mpp.get(fruits[r],0)+1
 
-                else:
-                    break
+            if len(mpp)>2:
+                mpp[fruits[l]]-=1
+                if mpp[fruits[l]]==0:
+                    del mpp[fruits[l]]
+                l+=1
+
+            if len(mpp)<=2:
+                Len=r-l+1
+                maxLen=max(maxLen,Len)
+
+            r+=1
+
         return maxLen
-        
