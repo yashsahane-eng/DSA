@@ -1,27 +1,29 @@
 class Solution(object):
+
+    def power(self,x,n):
+
+        if n==0:
+            return 1.0
+
+        if n==1:
+            return x
+
+        if n%2==0:
+            return self.power(x*x ,n//2)
+
+        return x*self.power(x,n-1)
+
+
     def myPow(self, x, n):
         """
         :type x: float
         :type n: int
         :rtype: float
         """
-
-        if n==0 or x== 1.0:
-            return 1
-
-        temp=n
+        num=n
 
         if n<0:
+            return 1.0 / self.power(x,-num)
 
-            x=1/x
-            temp=-1*n
-
-        ans=1
-
-        for i in range(temp):
-            ans=ans*x
-
-        return ans
-
-            
+        return self.power(x,num)
         
