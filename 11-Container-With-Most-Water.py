@@ -21,6 +21,3 @@ class Solution(object):
             maxArea=max(Area,maxArea)
 
         return maxArea
-
-
-        
